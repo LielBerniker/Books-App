@@ -33,6 +33,13 @@ function nextPage() {
     }
 }
 
+function prevPage() {
+    gPageIdx--
+    if (gPageIdx * PAGE_SIZE >= gBooks.length) {
+        gPageIdx = 0
+    }
+}
+
 function removeBook(bookId) {
     const bookIdx = gBooks.findIndex(book => bookId === book.id)
     gBooks.splice(bookIdx, 1)
@@ -74,7 +81,7 @@ function _createBooks() {
     // Nothing in storage - generate demo data
     if (!books || !books.length) {
         books = []
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 13; i++) {
             var title = gTitels[getRandomIntInclusive(0, gTitels.length - 1)]
             var price = getRandomIntInclusive(1, 1000)
             books.push(_createBook(title,price))

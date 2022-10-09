@@ -34,7 +34,7 @@ function renderBooks() {
                         currCell = books[i].title
                         break;
                     case 2:
-                        currCell = books[i].price
+                        currCell = books[i].price + '$'
                         break;
                     default:
                         break;
@@ -55,7 +55,7 @@ function renderBooks() {
             }
             strHTML += `</tr>`
         }
-        var elBoard = document.querySelector(".table")
+        var elBoard = document.querySelector(".board")
         elBoard.innerHTML = strHTML
     
 
@@ -166,5 +166,10 @@ function onSetSortBy() {
 
 function onNextPage() {
     nextPage()
+    renderBooks()
+}
+
+function onPrevPage() {
+    prevPage()
     renderBooks()
 }
