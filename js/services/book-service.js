@@ -27,15 +27,17 @@ function getBooks() {
 }
 
 function nextPage() {
-    gPageIdx++
-    if (gPageIdx * PAGE_SIZE >= gBooks.length) {
-        gPageIdx = 0
+    
+
+    if ((gPageIdx+1) * PAGE_SIZE >= gBooks.length) {
+        return
     }
+    gPageIdx++
 }
 
 function prevPage() {
     gPageIdx--
-    if (gPageIdx * PAGE_SIZE < gBooks.length) {
+    if (gPageIdx * PAGE_SIZE <= 0) {
         gPageIdx = 0
     }
 }
