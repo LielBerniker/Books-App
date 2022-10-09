@@ -35,7 +35,7 @@ function nextPage() {
 
 function prevPage() {
     gPageIdx--
-    if (gPageIdx * PAGE_SIZE >= gBooks.length) {
+    if (gPageIdx * PAGE_SIZE < gBooks.length) {
         gPageIdx = 0
     }
 }
@@ -59,10 +59,11 @@ function getBookById(bookId) {
     return currBook
 }
 
-function updateBook(bookId,newTitle ,newPrice) {
+function updateBook(bookId,newTitle ,newPrice,rating) {
     const book = gBooks.find(book => book.id === bookId)
     book.price = newPrice
     book.title = newTitle
+    book.rating = rating
     _saveBooksToStorage()
     return book
 }
@@ -72,7 +73,8 @@ function _createBook(title,price) {
         id: makeId(),
         title: title,
         price: price,
-        desc: makeLorem()
+        desc: makeLorem(),
+        rating: 1
     }
 }
 

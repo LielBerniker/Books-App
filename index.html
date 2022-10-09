@@ -34,13 +34,17 @@
             </label>
         </div>
     </section>
+    <div class="btn">
     <button title="Add Book" onclick="onAddBook()">Add Book</button>
     <button onclick="onPrevPage()">Prev Page</button>
     <button onclick="onNextPage()">Next Page</button>
+</div>
     <section class="books-container"></section>
     <div class="modal">
         <h3></h3>
         <h4>Book Price<span></span> </h4>
+        <h5>⭐ Rating </h4>
+        <div class="rating"></div>
         <h5>Book Description</h5>
         <p></p>
         <button onclick="onCloseModal()">Close</button>
@@ -57,7 +61,7 @@
         
         </table>
     </div>
-    <div class="user-msg"></div>
+   
     <script src="js/services/util.service.js"></script>
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/book-service.js"></script>

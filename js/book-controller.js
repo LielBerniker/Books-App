@@ -1,5 +1,5 @@
 'use strict'
-
+const star = "⭐"
 function onInit() {
     renderFilterByQueryStringParams()
     renderBooks()
@@ -50,7 +50,7 @@ function renderBooks() {
                 <button class="btn-remove" onclick="onDeleteBook('${books[i].id}')">Delete</button>
                 </td>`
               }
-    
+   
                
             }
             strHTML += `</tr>`
@@ -94,7 +94,7 @@ function onUpdateBook(bookId) {
     var newPrice = +prompt('Price?', book.price)
     var newTitle = prompt('Title?', book.title)
     if (( newPrice && newTitle ) && ( book.price !== newPrice || book.title !== newTitle )) {
-        const book = updateBook(bookId,newTitle ,newPrice)
+        const book = updateBook(bookId,newTitle ,newPrice,book.rating)
         renderBooks()
         flashMsg(`Title updated to: ${book.title} and price updated to: ${book.price}`)
     }
@@ -107,6 +107,9 @@ function onReadBook(bookId) {
     elModal.querySelector('h4 span').innerText = book.price
     elModal.querySelector('p').innerText = book.desc
     elModal.classList.add('open')
+    var strHTML = `<button onclick="onSubRating('${book.id}')">-</button><span> ${book.rating} </span><button onclick="onAddRating('${book.id}')">+</button>`
+    var elRating = document.querySelector(".rating")
+    elRating.innerHTML = strHTML
 }
 
 function onSetFilterBy(filterBy) {
@@ -172,4 +175,23 @@ function onNextPage() {
 function onPrevPage() {
     prevPage()
     renderBooks()
+}
+
+function onSubRating(bookId) {
+    var book = getBookById(bookId)
+    if ( book.rating == 1) {
+        return
+    }
+
+    book = updateBook(bookId,book.title ,book.price,book.rating-1)
+    onReadBook(bookId)
+}
+
+function onAddRating(bookId) {
+    var book = getBookById(bookId)
+    if ( book.rating == 10) {
+        return
+    }
+    book = updateBook(bookId,book.title ,book.price,book.rating+1)
+    onReadBook(bookId)
 }

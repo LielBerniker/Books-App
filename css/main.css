@@ -1,20 +1,62 @@
 body {
-    background-color: darkslateblue;
-    color: whitesmoke;
+    /* background-color: darkslateblue; */
+    color: black;
     overflow-x: hidden;
     padding: 0 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Poppins", sans-serif;
+    background-size: 150%;
+    background-image: linear-gradient(90deg, #ef476fff, #ffd166ff, #06d6a0ff, #118ab2ff);
+    animation: bg-animation 25s infinite;
 }
+
+
+
+h1 {
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    font-family: Lato, sans-serif;
+    color: #fff;
+    font-size: 4.5rem;
+    line-height: 5rem;
+    font-style: normal;
+    text-align: left;
+    font-weight: 900;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+}
+
+
 button {
     background-color: #222;
     color: whitesmoke;
-    border:0;
-    border-radius: .2em;
-    padding: 6px 10px;
     margin: 2px;
-    cursor: pointer;    
+    cursor: pointer;
+    background-color: #444;
+    border: none;
+    outline: none;
+    height: 30px;
+    border-radius: 10px;
+    text-transform: capitalize;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.5s;
+    margin-bottom: 0.5em;
 }
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 button:hover {
-    color: deeppink;
+    color: black;
+    background-color: #118ab2ff;
+
 }
 
 .books-container {
@@ -26,14 +68,15 @@ button:hover {
     background-color: white;
     color: darkviolet;
     width: 20%;
-    margin:.5em;
+    margin: .5em;
     border: 1px solid lightgray;
     border-radius: .2em;
     text-align: center;
     padding: 5px;
 }
+
 .book-preview .btn-remove {
-    float:right;
+    float: right;
 }
 
 .book-preview img {
@@ -46,26 +89,28 @@ button:hover {
     text-decoration: overline;
 }
 
-.book-preview h6 span{
+.book-preview h6 span {
     color: tomato;
     font-size: 2em;
 }
 
 .book-filter {
-    background-color: indigo;
+    background-color: #06d6a0ff;
     padding: 10px;
     margin: 20px;
 }
+
 .filter-vendor-select {
     text-transform: capitalize;
 }
+
 .book-filter hr {
-    margin: 30px;
+    margin: 20px;
 }
 
 
 .modal {
-    background-color: #111;
+    background-color: #118ab2ff;
     padding: 10px;
     position: absolute;
     top: 0px;
@@ -74,19 +119,24 @@ button:hover {
     min-width: 300px;
     text-align: center;
 }
+
 .modal.open {
     left: 50%;
     transition: left .5s;
+    color: aliceblue;
 }
-.modal h3{
-    color:pink;
+
+.modal h3 {
+    color: #06d6a0ff;
     text-decoration: overline;
     text-transform: capitalize;
 }
-.modal h4 span{
-    color:pink;
+
+.modal h4 span {
+    color: #06d6a0ff;
 }
-.modal > p {
+
+.modal>p {
     text-align: left;
 }
 
@@ -94,12 +144,25 @@ button:hover {
 .user-msg {
     position: fixed;
     bottom: -100px;
-    right:10px;
+    right: 10px;
     background-color: #111;
     padding: 10px;
+    color: white;
 }
+
 .user-msg.open {
     bottom: 10px;
     transition: bottom .5s;
 }
 
+.table {
+    background-color: whitesmoke;
+    font-size: 1.3em;
+}
+
+th {
+    background-color: #06d6a0ff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+h5{margin-bottom: 0;}
