@@ -13,8 +13,7 @@
     <h1>Books App</h1>
     <section class="book-filter">
         <h2>Filter</h2>
-        <select class="filter-title-select" onchange="onSetFilterBy({title: this.value})">
-        </select>
+        <input type="text" class="filter-title-select" oninput="onSetFilterBy({title: this.value})" placeholder="Search a book">
         <label>
             Min Price:
             <input type="range" min=0 max=999 value=0 class="filter-price-range"

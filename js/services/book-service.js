@@ -17,7 +17,7 @@ _createBooks()
 function getBooks() {
     
     // Filtering:
-    var books = gBooks.filter(book => book.title.includes(gFilterBy.title) &&
+    var books = gBooks.filter(book => book.title.toLowerCase().includes(gFilterBy.title.toLowerCase()) &&
         book.price >= gFilterBy.price && book.rating >= gFilterBy.rating)
 
     // Paging:
