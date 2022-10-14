@@ -4,6 +4,11 @@ function onInit() {
     renderFilterByQueryStringParams()
     renderBooks()
     renderTitelsInFilter()
+    var currUser = loadFromStorage("currUser")
+    if(currUser !== null)
+    {
+        onReadBook(currUser)
+    }
 }
 
 function renderTitelsInFilter() {
@@ -58,19 +63,6 @@ function renderBooks() {
         var elBoard = document.querySelector(".board")
         elBoard.innerHTML = strHTML
     
-
-    // var strHtmls = cars.map(car => `
-    //     <article class="car-preview">
-    //         <button class="btn-remove" onclick="onDeleteCar('${car.id}')">X</button>
-    //         <h5>${car.vendor}</h5>
-    //         <h6>Up to <span>${car.maxSpeed}</span> KMH</h6>
-    //         <button onclick="onReadCar('${car.id}')">Details</button>
-    //         <button onclick="onUpdateCar('${car.id}')">Update</button>
-    //         <img onerror="this.src='img/fiat.png'" src="img/${car.vendor}.png" alt="Car by ${car.vendor}">
-    //     </article> 
-    //     `
-    // )
-    // document.querySelector('.cars-container').innerHTML = strHtmls.join('')
 }
 
 function onDeleteBook(bookId) {
@@ -110,6 +102,7 @@ function onReadBook(bookId) {
     var strHTML = `<button onclick="onSubRating('${book.id}')">-</button><span> ${book.rating} </span><button onclick="onAddRating('${book.id}')">+</button>`
     var elRating = document.querySelector(".rating")
     elRating.innerHTML = strHTML
+    saveToStorage("currUser",bookId)
 }
 
 function onSetFilterBy(filterBy) {
@@ -125,6 +118,7 @@ function onSetFilterBy(filterBy) {
 
 function onCloseModal() {
     document.querySelector('.modal').classList.remove('open')
+    saveToStorage("currUser",null)
 }
 
 function flashMsg(msg) {
