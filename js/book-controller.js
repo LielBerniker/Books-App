@@ -66,19 +66,14 @@ function renderBooks() {
 }
 
 function onDeleteBook(bookId) {
-    deleteBook(bookId)
+    removeBook(bookId)
     renderBooks()
     flashMsg(`Book Deleted`)
 }
 
 function onAddBook() {
-    var title = prompt('book Title?', 'Harry Potter')
-    var price = prompt('book Price?', 19.9)
-    if (title && price) {
-        const book = addBook(title,price)
-        renderBooks()
-        flashMsg(`Book Added (id: ${book.id})`)
-    }
+    var elModal = document.querySelector('.modalAddBook')
+    elModal.classList.add('open')
 }
 
 function onUpdateBook(bookId) {
@@ -190,4 +185,23 @@ function onAddRating(bookId) {
     }
     book = updateBook(bookId,book.title ,book.price,book.rating+1)
     onReadBook(bookId)
+}
+function onCloseAddModal()
+{
+    document.querySelector('.modalAddBook').classList.remove('open')
+}
+function onSubmitAddModal()
+{
+    var bookTitle = document.getElementById("titleInput").value 
+    var bookPrice = document.getElementById("priceInput").value 
+    if (!bookTitle || !bookPrice) {
+        document.querySelector('.modalAddBook').classList.remove('open')
+        alert(`The book is not added , please fill all the information `)
+    }
+    else{
+        const book = addBook(bookTitle,bookPrice)
+        renderBooks()
+        document.querySelector('.modalAddBook').classList.remove('open')
+    }
+
 }

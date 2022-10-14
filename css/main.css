@@ -130,6 +130,21 @@ button:hover {
 .modal>p {
     text-align: left;
 }
+.modalAddBook{
+    background-color: #118ab2ff;
+    padding: 10px;
+    position: absolute;
+    top: 0px;
+    height: 80vh;
+    min-width: 300px;
+    text-align: center;
+    display: none;
+}
+.modalAddBook.open{
+    color: aliceblue;
+    display: block;
+    transition: ease-in;
+}
 
 .user-msg {
     position: fixed;
