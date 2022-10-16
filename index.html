@@ -54,7 +54,6 @@
         <button onclick="onCloseModal()">Close</button>
     </div>
     <div class="modalAddBook"  >
-        <form action="">
         <h3>Add Book</h3>
         <label for="titleInput" >Book title: <input id="titleInput" type="text" placeholder="Add book title"> </label>
         <br>
@@ -64,21 +63,21 @@
         <h3></h3>
         <button onclick="onCloseAddModal()">Exit</button>
         <button onclick="onSubmitAddModal()">Submit</button>
-    </form>
     </div> 
-    <div>
-        <table class="table" id="myTable" border="1" cellpadding="10">
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Price</th>
-                <th>Actions</th>
-              </tr>
-            <tbody class="board"></tbody>
-        
-        </table>
+    <div class="modalUpdateBook"  >
+        <h3>update Book</h3>
+        <label for="titleUpdateInput" >Book title: <input id="titleUpdateInput" type="text" placeholder="Add book title"> </label>
+        <br>
+        <br>
+        <label for="priceUpdateInput">Book price: <input id="priceUpdateInput" type="number" placeholder="Add book price"> </label>
+        <br>
+        <h3></h3>
+        <button onclick="onCloseUpdateModal()">Exit</button>
+        <button onclick="onSubmitUpdateModal()">Update</button>
+    </div> 
+    <div class="booksContainer">
     </div>
-   
+    <div class="user-msg"></div>
     <script src="js/services/util.service.js"></script>
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/book-service.js"></script>
