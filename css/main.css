@@ -161,6 +161,39 @@ button:hover {
     transition: ease-in;
 }
 
+.booksContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+.book-preview {
+    background-color: white;
+    color: darkviolet;
+    width: 20%;
+    margin:.5em;
+    border: 1px solid lightgray;
+    border-radius: .2em;
+    text-align: center;
+    padding: 5px;
+}
+.book-preview .btn-remove {
+    float:right;
+}
+
+.book-preview img {
+    max-width: 100%;
+}
+
+.book-preview h5 {
+    font-size: 1.4em;
+    text-transform: capitalize;
+    text-decoration: overline;
+}
+
+.book-preview h6 span{
+    color: tomato;
+    font-size: 2em;
+}
+
 .user-msg {
     position: fixed;
     bottom: -100px;

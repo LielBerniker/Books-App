@@ -30,54 +30,80 @@ function renderTitelsInFilter() {
 
 
 function renderBooks() {
-    var books = getBooks()
-    var strHTMLTable =`<table class="table" id="myTable" border="1" cellpadding="10">
-    <tr>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Price</th>
-        <th>Actions</th>
-      </tr>
-    <tbody class="board"></tbody>
-    </table>`
-    var elBoard = document.querySelector(".booksContainer")
-    elBoard.innerHTML = strHTMLTable
-        var strHTML = ``
-        for (let i = 0; i < books.length; i++) {
-            strHTML += `<tr>`
-            for (let j = 0; j < 4; j++) {
-                var currCell
-                switch (j) {
-                    case 0:
-                        currCell = books[i].id
-                        break;
-                    case 1:
-                        currCell = books[i].title
-                        break;
-                    case 2:
-                        currCell = books[i].price + '$'
-                        break;
-                    default:
-                        break;
-                }
-               if(j<3)
-               {
-                strHTML += `<td class="cell" , event.preventDefault();">${currCell}</td>`
-               }
-              else{
-               strHTML += `<td class="cell" , event.preventDefault();">     
-                <button onclick="onReadBook('${books[i].id}')">Details</button>  
-                <button onclick="onUpdateBook('${books[i].id}')">Update</button>
-                <button class="btn-remove" onclick="onDeleteBook('${books[i].id}')">Delete</button>
-                </td>`
-              }
-            }
-            strHTML += `</tr>`
-        }
-        elBoard = document.querySelector(".board")
-        elBoard.innerHTML = strHTML
+    var currLayout = loadFromStorage(FAV_LAYOUT)
+    renderBooksCards()
+  
+    if(currLayout !== null && currLayout === "cards")
+    {
+        renderBooksCards()
+        return
+    }
+    renderBooksTable()
 }
-
+function renderBooksCards()
+{
+    var books = getBooks()
+    var strHtmls = books.map(book => `
+        <article class="book-preview">
+            <h5>${book.title}</h5>
+            <h6>Price: <span>${book.price}</span>$</h6>
+            <button onclick="onReadBook('${book.id}')">Details</button>
+            <button onclick="onUpdateBook('${book.id}')">Update</button>
+            <button class="btn-remove" onclick="onDeleteBook('${book.id}')">Delete</button>
+        </article> 
+        `
+    )
+    document.querySelector('.booksContainer').innerHTML = strHtmls.join('')
+}
+function renderBooksTable()
+    {
+        var books = getBooks()
+        var strHTMLTable =`<table class="table" id="myTable" border="1" cellpadding="10">
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        <tbody class="board"></tbody>
+        </table>`
+        var elBoard = document.querySelector(".booksContainer")
+        elBoard.innerHTML = strHTMLTable
+            var strHTML = ``
+            for (let i = 0; i < books.length; i++) {
+                strHTML += `<tr>`
+                for (let j = 0; j < 4; j++) {
+                    var currCell
+                    switch (j) {
+                        case 0:
+                            currCell = books[i].id
+                            break;
+                        case 1:
+                            currCell = books[i].title
+                            break;
+                        case 2:
+                            currCell = books[i].price + '$'
+                            break;
+                        default:
+                            break;
+                    }
+                   if(j<3)
+                   {
+                    strHTML += `<td class="cell" , event.preventDefault();">${currCell}</td>`
+                   }
+                  else{
+                   strHTML += `<td class="cell" , event.preventDefault();">     
+                    <button onclick="onReadBook('${books[i].id}')">Details</button>  
+                    <button onclick="onUpdateBook('${books[i].id}')">Update</button>
+                    <button class="btn-remove" onclick="onDeleteBook('${books[i].id}')">Delete</button>
+                    </td>`
+                  }
+                }
+                strHTML += `</tr>`
+            }
+            elBoard = document.querySelector(".board")
+            elBoard.innerHTML = strHTML
+    }
 function onDeleteBook(bookId) {
     removeBook(bookId)
     flashMsg(massageOptions.delete)
