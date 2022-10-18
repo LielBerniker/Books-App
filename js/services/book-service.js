@@ -28,11 +28,12 @@ function getBooks() {
 
 function nextPage() {
     
-
     if ((gPageIdx+1) * PAGE_SIZE >= gBooks.length) {
         return
     }
     gPageIdx++
+    document.getElementById("page-num").innerText = gPageIdx +1
+
 }
 
 function prevPage() {
@@ -40,6 +41,9 @@ function prevPage() {
     if (gPageIdx * PAGE_SIZE <= 0) {
         gPageIdx = 0
     }
+
+    document.getElementById("page-num").innerText = gPageIdx +1
+
 }
 
 function removeBook(bookId) {

@@ -2,7 +2,8 @@
 const star = "⭐"
 const READ_BOOK_ID = "currReadBook"
 const UPDATE_BOOK_ID = "currUpdateBook"
-const FAV_LAYOUT = "favLayout:"
+const FAV_LAYOUT = "favLayout"
+var favState = {cards:"cards",table:"table"}
 var massageOptions = {add:`The book has been added`,delete:`The book has been deleted`,update:`The book has been updated`,badSubmit:`Some of the information is missing!!`}
 function onInit() {
     console.log("active init")
@@ -31,7 +32,6 @@ function renderTitelsInFilter() {
 
 function renderBooks() {
     var currLayout = loadFromStorage(FAV_LAYOUT)
-    renderBooksCards()
   
     if(currLayout !== null && currLayout === "cards")
     {
@@ -47,9 +47,9 @@ function renderBooksCards()
         <article class="book-preview">
             <h5>${book.title}</h5>
             <h6>Price: <span>${book.price}</span>$</h6>
-            <button onclick="onReadBook('${book.id}')">Details</button>
-            <button onclick="onUpdateBook('${book.id}')">Update</button>
-            <button class="btn-remove" onclick="onDeleteBook('${book.id}')">Delete</button>
+            <button type="button" class="btn btn-primary" onclick="onReadBook('${book.id}')">Details</button>
+            <button type="button" class="btn btn-warning" onclick="onUpdateBook('${book.id}')">Update</button>
+            <button type="button" class="btn btn-danger" class="btn-remove" onclick="onDeleteBook('${book.id}')">Delete</button>
         </article> 
         `
     )
@@ -93,9 +93,9 @@ function renderBooksTable()
                    }
                   else{
                    strHTML += `<td class="cell" , event.preventDefault();">     
-                    <button onclick="onReadBook('${books[i].id}')">Details</button>  
-                    <button onclick="onUpdateBook('${books[i].id}')">Update</button>
-                    <button class="btn-remove" onclick="onDeleteBook('${books[i].id}')">Delete</button>
+                    <button type="button" class="btn btn-primary" onclick="onReadBook('${books[i].id}')">Details</button>  
+                    <button type="button" class="btn btn-warning" onclick="onUpdateBook('${books[i].id}')">Update</button>
+                    <button type="button" class="btn btn-danger" class="btn-remove" onclick="onDeleteBook('${books[i].id}')">Delete</button>
                     </td>`
                   }
                 }
@@ -239,7 +239,7 @@ function onSubmitAddModal()
     }
     document.getElementById("titleInput").value =''
     document.getElementById("priceInput").value =''
-    const book = addBook(bookTitle,bookPrice)  
+    addBook(bookTitle,bookPrice)  
     document.querySelector('.modalAddBook').classList.remove('open')
     flashMsg(massageOptions.add)
     renderBooks()
@@ -266,4 +266,14 @@ function onSubmitUpdateModal()
     }
     document.querySelector('.modalUpdateBook').classList.remove('open')
 
+}
+function onClickTable()
+{
+    saveToStorage(FAV_LAYOUT,favState.table)
+    renderBooks()
+}
+function onClickCards()
+{
+    saveToStorage(FAV_LAYOUT,favState.cards)
+    renderBooks()
 }
