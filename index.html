@@ -47,19 +47,19 @@
             <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" onclick="onClickCards()">
             <label class="btn btn-outline-primary" for="btnradio2">Cards</label>
           </div>
-    <button title="Add Book" onclick="onAddBook()">Add Book</button>
+    <button class="btn btn-primary" title="Add Book" onclick="onAddBook()">Add Book</button>
 </div>
     <section class="books-container"></section>
-    <div class="modal"  >
-        <h3></h3>
-        <h4>Book Price <span></span> </h4>
+    <div class="modal bg-info w-50  "  >
+        <h3 class=" text-dark"></h3>
+        <h4>Book Price <span class=" text-dark"></span> </h4>
         <h5>⭐ Rating </h4>
         <div class="rating"></div>
         <h5>Book Description</h5>
         <p></p>
         <button onclick="onCloseModal()">Close</button>
     </div>
-    <div class="modalAddBook"  >
+    <div class="modalAddBook bg-primary"  >
         <h3>Add Book</h3>
         <label for="titleInput" >Book title: <input id="titleInput" type="text" placeholder="Add book title"> </label>
         <br>
@@ -67,10 +67,10 @@
         <label for="priceInput">Book price: <input id="priceInput" type="number" placeholder="Add book price"> </label>
         <br>
         <h3></h3>
-        <button onclick="onCloseAddModal()">Exit</button>
+        <button class="m-3" onclick="onCloseAddModal()">Exit</button>
         <button onclick="onSubmitAddModal()">Submit</button>
     </div> 
-    <div class="modalUpdateBook"  >
+    <div class="modalUpdateBook col-4 col-md-3 bg-primary"  >
         <h3>update Book</h3>
         <label for="titleUpdateInput" >Book title: <input id="titleUpdateInput" type="text" placeholder="Add book title"> </label>
         <br>
@@ -78,7 +78,7 @@
         <label for="priceUpdateInput">Book price: <input id="priceUpdateInput" type="number" placeholder="Add book price"> </label>
         <br>
         <h3></h3>
-        <button onclick="onCloseUpdateModal()">Exit</button>
+        <button class="m-3" onclick="onCloseUpdateModal()">Exit</button>
         <button onclick="onSubmitUpdateModal()">Update</button>
     </div> 
     <div class="booksContainer">

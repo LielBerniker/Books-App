@@ -6,6 +6,12 @@ const FAV_LAYOUT = "favLayout"
 var favState = {cards:"cards",table:"table"}
 var massageOptions = {add:`The book has been added`,delete:`The book has been deleted`,update:`The book has been updated`,badSubmit:`Some of the information is missing!!`}
 function onInit() {
+    var currLayout = loadFromStorage(FAV_LAYOUT)
+    if(currLayout !== null && currLayout === "cards")
+    {
+        document.getElementById("btnradio2").checked = true
+    }
+    document.getElementById("titleInput").value 
     console.log("active init")
     renderFilterByQueryStringParams()
     renderBooks()

@@ -101,12 +101,9 @@ button:hover {
 }
 
 .modal {
-    background-color: #118ab2ff;
     padding: 10px;
     position: absolute;
     top: 0px;
-    height: 80vh;
-    min-width: 300px;
     text-align: center;
     display: none;
 }
@@ -118,25 +115,18 @@ button:hover {
 }
 
 .modal h3 {
-    color: #06d6a0ff;
     text-decoration: overline;
     text-transform: capitalize;
 }
 
-.modal h4 span {
-    color: #06d6a0ff;
-}
 
 .modal>p {
     text-align: left;
 }
 .modalAddBook{
-    background-color: #118ab2ff;
     padding: 10px;
     position: absolute;
     top: 0px;
-    height: 80vh;
-    min-width: 300px;
     text-align: center;
     display: none;
 }
@@ -146,12 +136,9 @@ button:hover {
     transition: ease-in;
 }
 .modalUpdateBook{
-    background-color: #118ab2ff;
     padding: 10px;
     position: absolute;
     top: 0px;
-    height: 80vh;
-    min-width: 300px;
     text-align: center;
     display: none;
 }
