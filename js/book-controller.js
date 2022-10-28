@@ -53,6 +53,7 @@ function renderBooksCards()
         <article class="book-preview">
             <h5>${book.title}</h5>
             <h6>Price: <span>${book.price}</span>$</h6>
+            <img class="img-fluid w-30 h-30" src="img/book.png" alt="book img">
             <button type="button" class="btn btn-primary" onclick="onReadBook('${book.id}')">Details</button>
             <button type="button" class="btn btn-warning" onclick="onUpdateBook('${book.id}')">Update</button>
             <button type="button" class="btn btn-danger" class="btn-remove" onclick="onDeleteBook('${book.id}')">Delete</button>
@@ -117,11 +118,13 @@ function onDeleteBook(bookId) {
 }
 
 function onAddBook() {
+    hideAll()
     var elModal = document.querySelector('.modalAddBook')
     elModal.classList.add('open')
 }
 
 function onUpdateBook(bookId) {
+    hideAll()
     saveToStorage(UPDATE_BOOK_ID,bookId)
     var elModal = document.querySelector('.modalUpdateBook')
     elModal.classList.add('open')
@@ -141,6 +144,7 @@ function onReadBook(bookId) {
     var elRating = document.querySelector(".rating")
     elRating.innerHTML = strHTML
     saveToStorage(READ_BOOK_ID,bookId)
+    hideAll()
 }
 
 function onSetFilterBy(filterBy) {
@@ -157,6 +161,7 @@ function onSetFilterBy(filterBy) {
 function onCloseModal() {
     document.querySelector('.modal').classList.remove('open')
     saveToStorage(READ_BOOK_ID,null)
+    showAll()
 }
 
 function flashMsg(msg) {
@@ -234,6 +239,7 @@ function onCloseAddModal()
     document.getElementById("titleInput").value =''
     document.getElementById("priceInput").value =''
     document.querySelector('.modalAddBook').classList.remove('open')
+    showAll()
 }
 function onSubmitAddModal()
 {
@@ -241,6 +247,7 @@ function onSubmitAddModal()
     var bookPrice = document.getElementById("priceInput").value 
     if (!bookTitle || !bookPrice) {
         flashMsg(massageOptions.badSubmit)
+        showAll()
         return
     }
     document.getElementById("titleInput").value =''
@@ -248,11 +255,13 @@ function onSubmitAddModal()
     addBook(bookTitle,bookPrice)  
     document.querySelector('.modalAddBook').classList.remove('open')
     flashMsg(massageOptions.add)
+    showAll()
     renderBooks()
 }
 function onCloseUpdateModal()
 {
     document.querySelector('.modalUpdateBook').classList.remove('open')
+    showAll()
 }
 function onSubmitUpdateModal()
 {
@@ -263,6 +272,7 @@ function onSubmitUpdateModal()
     if( !newPrice || !newTitle ) 
     {
         flashMsg(massageOptions.badSubmit)
+        showAll()
         return
     }
     if (book.price !== newPrice || book.title !== newTitle ){
@@ -270,6 +280,7 @@ function onSubmitUpdateModal()
         flashMsg(massageOptions.update)
         renderBooks()
     }
+    showAll()
     document.querySelector('.modalUpdateBook').classList.remove('open')
 
 }
@@ -282,4 +293,21 @@ function onClickCards()
 {
     saveToStorage(FAV_LAYOUT,favState.cards)
     renderBooks()
+}
+function hideAll()
+{
+    document.querySelector('section[class="book-filter"]').style.visibility = 'hidden'
+    document.querySelector('div[class="btn"]').style.visibility = 'hidden'
+    document.querySelector('div[class="booksContainer"]').style.visibility = 'hidden'
+    document.querySelector('ul[class="pagination"]').style.visibility = 'hidden'
+    document.querySelector('h1[class="header"]').style.visibility = 'hidden'
+}
+
+function showAll()
+{
+    document.querySelector('section[class="book-filter"]').style.visibility = 'visible'
+    document.querySelector('div[class="btn"]').style.visibility = 'visible'
+    document.querySelector('div[class="booksContainer"]').style.visibility = 'visible'
+    document.querySelector('ul[class="pagination"]').style.visibility = 'visible'
+    document.querySelector('h1[class="header"]').style.visibility = 'visible'
 }
